@@ -21,10 +21,14 @@ public class Main {
             System.out.print("Enter a expression: ");
             exp = scanner.nextLine();
 
+            SyntaxChecker syntaxChecker=new SyntaxChecker();
+
+
 
             for (int i = 0; i < exp.length(); i++) {
                 inputs.add(exp.charAt(i));
             }
+            ArrayList<Character> list=syntaxChecker.checkSyntax(inputs);
 //                    inputs.add('(');
 //                    inputs.add('(');
 //                    inputs.add('2');
@@ -58,17 +62,17 @@ public class Main {
             //infix
             System.out.println("the infix");
             InfixCrater infixCrater = new InfixCrater();
-            infixCrater.setInputArray(inputs);
-            ArrayList<String> list = infixCrater.infixGen();
+            infixCrater.setInputArray(list);
+            ArrayList<String> infix = infixCrater.infixGen();
 
-            for (String val : list) {
+            for (String val : infix) {
                 System.out.print(val);
             }
             System.out.println();
             //POSTFIX
             System.out.println("the post fix");
             PosixCreator posixCreator = new PosixCreator();
-            posixCreator.setInfix(list);
+            posixCreator.setInfix(infix);
             ArrayList<String> postfix = posixCreator.postfixGen();
 
             for (String val : postfix) {

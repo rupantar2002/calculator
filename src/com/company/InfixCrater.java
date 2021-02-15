@@ -63,6 +63,7 @@ public class InfixCrater {
         for (int j = i + 1; j < characterArrayList.size(); j++) {
             s = s.append(characterArrayList.get(j).toString());
         }
+        //this checks if s is even valid to be put into the postfix array
         if(s.length() > 0) {
             infix.add(s.toString());
         }
